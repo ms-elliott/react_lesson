@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="../../../../libs/react.development.js"></script>
+        <script src="../../../../libs/react-dom.development.js"></script>
+        <script src="../../../../libs/babel-standalone.js"></script>
+    </head>
+    <body>
+        <div id="app">
+        <script type="text/babel">
+            const appEl = document.querySelector("#app");
+            const root = ReactDOM.createRoot(appEl);
+            // コンポーネントは関数の形式で定義する（コンポーネント名の頭は必ず大文字） ・・・関数コンポーネント
+            // function Example() {
+            //     return <h1>こんにちは</h1>;
+            // }
+            // constでもアポー関数を使用すればコンポーネントを定義することができる　(どちらを使うかは個人の好み)
+            const Example = () => {
+                return (
+                    <div>
+                        <h1>こんにちは</h1>
+                    </div>
+                );
+            };
+
+            root.render(<Example />);
+        </script>
+    </body>
+</html>
