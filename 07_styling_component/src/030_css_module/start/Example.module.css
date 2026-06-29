@@ -7,9 +7,22 @@
     height: 60px;
     font-weight: bold;
     cursor: pointer;
-    background: orange;
+}
+
+.btn:hover {
+    background-color: red;
+}
+
+.btn:acitive {
+    background-color: purple;
 }
 
 .selected {
     background-color: pink;
+}
+
+@media (max-width: 600px) {
+    .btn {
+        border-radius: 0;
+    }
 }
