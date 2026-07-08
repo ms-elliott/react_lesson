@@ -1,6 +1,9 @@
 import { useState } from "react"
 
 const Child = (countNum) => {
+    // デバッガーを配置すると、その行でコードが一時停止する
+    debugger
+
   return <p>現在のカウント数: {countNum.val}</p>
 }
 
