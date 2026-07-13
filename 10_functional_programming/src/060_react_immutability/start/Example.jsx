@@ -1,9 +1,24 @@
 import { useState } from "react";
 
-const Child = (props) => {
+// 引数で渡された値を変更しない （immutability）
+const Child = ({ state, setState }) => {
+    // setState({ value: 1 })
+    // props.state = { value: 1 }
+
+    const increment = () => {
+        setState(prev => {
+            // 下記のように、propsを直接変更しない
+            // prev.value += 1;
+            // return prev;
+
+            const newState = { value: prev.value + 1 }
+            return newState;
+        })
+    }
   return (
     <>
-      <span>{props.state.value}</span>
+      <span>{state.value}</span>
+      <button onClick={increment}>+</button>
     </>
   );
 };
