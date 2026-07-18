@@ -1,8 +1,8 @@
-import { useDispatchCalc, useCalc } from "../context/CalcContext";
+import { useCalcDispatch, useCalc } from "../context/CalcContext";
 
 const Input = ({ name }) => {
-  const dispatch = useDispatchCalc();
-  const state = useCalc();
+    const state = useCalc();
+    const dispatch = useCalcDispatch();
   const numChangeHandler = (e) => {
     dispatch({
       type: "change",

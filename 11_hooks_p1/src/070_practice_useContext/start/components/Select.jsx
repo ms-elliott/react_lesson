@@ -9,15 +9,15 @@ const Select = () => {
     dispatch({ type: e.target.value });
   };
 
-  return (
-    <select value={state.type} name="type" onChange={calculate}>
-      {CALC_OPTIONS.map((type) => (
-        <option key={type} value={type}>
-          {type}
-        </option>
-      ))}
-    </select>
-  );
-};
+    return (
+      <select value={state.type} name="type" onChange={calculate}>
+        {CALC_OPTIONS.map((type) => (
+          <option key={type} value={type}>
+            {type}
+          </option>
+        ))}
+      </select>
+    )
+}
 
 export default Select;

@@ -45,4 +45,4 @@ export const CalcProvider = ({ children }) => {
 };
 
 export const useCalc = () => useContext(CalcContext);
-export const useDispatchCalc = () => useContext(CalcDispatchContext);
+export const useCalcDispatch = () => useContext(CalcDispatchContext);
