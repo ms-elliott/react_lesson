@@ -1,20 +1,35 @@
-import { Children, createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 const TodoContext = createContext();
 const TodoDispatchContext = createContext();
 
-  const todosList = [
-  ];
+const todosList = [
+  {
+    id: 1,
+    content: "店予約する",
+    editing: false,
+  },
+  {
+    id: 2,
+    content: "卵買う",
+    editing: false,
+  },
+  {
+    id: 3,
+    content: "郵便出す",
+    editing: false,
+  },
+];
 
 const todoReducer = (todos, action) => {
-    switch(action.tyle) {
-        case 'todo/add':
+    switch(action.type) {
+        case "todo/add":
             return [...todos, action.todo]
-        case 'todo/delete':
+        case "todo/delete":
             return todos.filter((todo) => {
-                return todo.id !== action.todos.id;
+                return todo.id !== action.todo.id;
             });
-        case 'todo/update':
+        case "todo/update":
             return todos.map(_todo => {
                 return _todo.id === action.todo.id ? { ..._todo, ...action.todo} : { ..._todo};
             })
@@ -35,7 +50,7 @@ const TodoProvider = ({ children }) => {
     )
 }
 
-const useTodos = useContext(TodoContext);
-const useDispatchTodos = useContext(TodoDispatchContext);
+const useTodos = () => useContext(TodoContext);
+const useDispatchTodos= () => useContext(TodoDispatchContext);
 
 export { useTodos, useDispatchTodos, TodoProvider }

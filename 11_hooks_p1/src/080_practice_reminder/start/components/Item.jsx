@@ -9,13 +9,17 @@ const Item = ({ todo }) => {
 
     const toggleEditMode = () => {
         const newTodo = { ...todo, editing: !todo.editing };
-        dispatch({ type: 'todo/update', newTodo});
+        dispatch({ type: 'todo/update', todo: newTodo});
     }
 
     const confirmContent = (e) => {
         e.preventDefault();
-        const newTodo = { ...todo, editing: !todo.editing, content: editingContent };
-        dispatch({ type: 'todo/update', newTodo});
+        const newTodo = {
+            ...todo,
+            editing: !todo.editing,
+            content: editingContent
+        };
+        dispatch({ type: 'todo/update', todo: newTodo});
     }
 
     const complete = (todo) => {
@@ -37,7 +41,6 @@ const Item = ({ todo }) => {
             }
             </form>
         </div>
-
     )
 }
 
