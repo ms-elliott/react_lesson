@@ -1,18 +1,40 @@
 import { useEffect, useState } from "react";
-
 const Example = () => {
+    const [isDisp, setIsDisp] = useState(true);
+
+    return (
+        <>
+            {isDisp && <Timer/>}
+            <button onClick={() =>setIsDisp(prev => !prev)}>トグル</button>
+        </>
+    )
+}
+
+
+const Timer = () => {
   const [time, setTime] = useState(0);
 
   useEffect(() => {
-    console.log('useEffect is called');
+    console.log('init');
     window.setInterval(() => {
       setTime(prev => prev + 1);
     }, 1000);
+
+    // 依存配列を渡さない場合、Timerコンポーネントが消滅する際にreturnが実行される
+    return () => {
+        console.log('end');
+    }
   }, [])
-  
+
   useEffect(() => {
+    console.log('updated');
     document.title = 'counter:' + time;
     window.localStorage.setItem('time-key-end', time)
+
+    // 依存配列を渡す場合、コールバック関数の後に毎回returnが実行される(後処理を記述する・・・クリーンナップ)
+    return () => {
+        console.log('updated end')
+    }
   }, [time]);
 
   return (
