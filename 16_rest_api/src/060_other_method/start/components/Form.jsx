@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatchTodos } from "../context/TodoContext";
-const Form = ({ createTodo }) => {
+import todoApi from "../api/todo"
+
+const Form = ({ todo }) => {
   const [enteredTodo, setEnteredTodo] = useState("");
   const dispatch = useDispatchTodos();
 
@@ -9,10 +11,16 @@ const Form = ({ createTodo }) => {
 
     const newTodo = {
       // id: Math.floor(Math.random() * 1e5), // json-server v0tov1対応 デフォルトで文字列のidが振られるため不要。
-      content: enteredTodo,
-      editing: false,
+      ...todo,
+      content: editiongContent,
+      editing: !todo.editing,
     };
 
+    todoApi.patch(newTodo).then((newTodo) => {
+        dispatch({ type: "todo/update", todo: newTodo})
+    })
+
+    todoApi.post(newTodo);
     dispatch({ type: "todo/add", todo: newTodo });
 
     setEnteredTodo("");
