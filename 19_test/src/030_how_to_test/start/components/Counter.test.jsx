@@ -10,6 +10,10 @@ test('カウントアップボタンで「現在のカウント」が＋１さ�
     // Arrange
     render(<Counter originCount={0} />)
 
+    // 更新前
+     const spanElBeforeUpdate = screen.getByText('現在のカウント:0')
+    expect(spanElBeforeUpdate).toBeInTheDocument();
+
     //Act
     const btn = screen.getByRole('button', { name: カウントアップ})
     fireEvent.click(btn)
